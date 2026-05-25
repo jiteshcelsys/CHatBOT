@@ -18,7 +18,7 @@ langchain-huggingface   # Local embeddings via sentence-transformers
 langchain-chroma
 langchain-text-splitters
 
-# Embeddings model (runs locally, no API key needed)
+# Embeddings model (runs locally; Groq has no embeddings API)
 sentence-transformers
 
 # LangGraph orchestration
@@ -27,8 +27,8 @@ langgraph
 # Supabase (persistent memory + chat history)
 supabase
 
-# Vector database
-chromadb
+# Vector database — thin HTTP client only (Chroma Cloud)
+chromadb-client
 
 # Document loaders
 pypdf
