@@ -23,14 +23,29 @@ class Settings(BaseSettings):
     firebase_private_key: str = ""
     firebase_client_email: str = ""
 
-    # LangChain / OpenAI
-    openai_api_key: str = ""
+    # LangChain / Groq
+    groq_api_key: str = ""
+    groq_model: str = "llama-3.3-70b-versatile"   # default chat model
     langchain_api_key: str = ""
     langchain_tracing_v2: bool = True
     langchain_project: str = "chatbot"
 
+    # HuggingFace embeddings (local, no API key required)
+    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+
     # ChromaDB
     chroma_persist_dir: str = "./chroma_db"
+    chroma_chunk_size: int = 1000
+    chroma_chunk_overlap: int = 200
+
+    # Ingestion pipeline
+    ingestion_allowed_types: list[str] = [".pdf", ".txt", ".docx", ".md"]
+    ingestion_max_file_size_mb: int = 50
+    ingestion_max_batch_files: int = 10
+
+    # Chat / sessions
+    chat_max_sessions_per_user: int = 20
+    chat_summary_threshold: int = 20   # trigger summarisation after N messages
 
     @property
     def cors_origins_list(self) -> list[str]:

@@ -1,0 +1,24 @@
+# Secrets — never commit these
+.env
+.env.local
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ChromaDB persisted data
+chroma_db/
+
+# Uploaded files (temp storage)
+uploads/
+
+# Build / dist
+*.egg-info/
+dist/
+build/

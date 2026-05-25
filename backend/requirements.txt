@@ -1,5 +1,38 @@
+# Web framework
 fastapi==0.115.5
 uvicorn[standard]==0.32.1
+python-multipart==0.0.20
+
+# Config
 pydantic-settings==2.6.1
 python-dotenv==1.0.1
+
+# HTTP client
 httpx==0.28.0
+
+# LangChain ecosystem
+langchain
+langchain-community
+langchain-groq          # Groq LLM (chat/generation)
+langchain-huggingface   # Local embeddings via sentence-transformers
+langchain-chroma
+langchain-text-splitters
+
+# Embeddings model (runs locally, no API key needed)
+sentence-transformers
+
+# LangGraph orchestration
+langgraph
+
+# Supabase (persistent memory + chat history)
+supabase
+
+# Vector database
+chromadb
+
+# Document loaders
+pypdf
+python-docx      # DOCX parsing
+markdown         # Markdown → plain text
+aiofiles         # async file I/O
+
