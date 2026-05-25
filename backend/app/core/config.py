@@ -37,6 +37,9 @@ class Settings(BaseSettings):
     chroma_persist_dir: str = "./chroma_db"
     chroma_chunk_size: int = 1000
     chroma_chunk_overlap: int = 200
+    chroma_cloud_api_key: str = ""
+    chroma_cloud_tenant: str = ""
+    chroma_cloud_database: str = "default_database"
 
     # Ingestion pipeline
     ingestion_allowed_types: list[str] = [".pdf", ".txt", ".docx", ".md"]

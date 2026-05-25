@@ -71,9 +71,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Refresh token every 55 minutes
     const interval = setInterval(async () => {
       if (auth.currentUser) {
-        const fresh = await getIdToken(true);
-        setToken(fresh);
-        useAuthStore.getState().setToken(fresh ?? "");
+        try {
+          const fresh = await getIdToken(true);
+          setToken(fresh);
+          useAuthStore.getState().setToken(fresh ?? "");
+        } catch {
+          // Network unavailable — will retry next interval
+        }
       }
     }, 55 * 60 * 1000);
 
