@@ -27,8 +27,11 @@ langgraph
 # Supabase (persistent memory + chat history)
 supabase
 
-# Vector database — thin HTTP client only (Chroma Cloud)
-chromadb-client
+# Firebase Admin SDK (authentication)
+firebase-admin
+
+# Vector database (full package required by langchain-chroma)
+chromadb
 
 # Document loaders
 pypdf

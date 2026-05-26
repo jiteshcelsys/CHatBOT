@@ -9,8 +9,8 @@ import logging
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 
-from app.core.config import get_settings
 from app.rag.embeddings import get_embeddings
+from app.vectorstore.chroma_client import get_chroma_client
 
 logger = logging.getLogger(__name__)
 
@@ -19,8 +19,6 @@ _DEFAULT_COLLECTION = "documents"
 
 class VectorStoreService:
     def __init__(self, collection_name: str = _DEFAULT_COLLECTION):
-        settings = get_settings()
-        self._persist_dir = settings.chroma_persist_dir
         self._collection_name = collection_name
         self._store: Chroma | None = None
 
@@ -31,15 +29,11 @@ class VectorStoreService:
     def _get_store(self) -> Chroma:
         if self._store is None:
             self._store = Chroma(
+                client=get_chroma_client(),
                 collection_name=self._collection_name,
                 embedding_function=get_embeddings(),
-                persist_directory=self._persist_dir,
             )
-            logger.info(
-                "ChromaDB store opened | collection=%s persist_dir=%s",
-                self._collection_name,
-                self._persist_dir,
-            )
+            logger.info("ChromaDB Cloud store opened | collection=%s", self._collection_name)
         return self._store
 
     # ------------------------------------------------------------------ #

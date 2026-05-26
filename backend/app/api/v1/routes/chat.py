@@ -76,6 +76,20 @@ async def list_sessions(
     return success([SessionResponse(**s).model_dump() for s in sessions])
 
 
+@router.patch(
+    "/session/{session_id}",
+    summary="Rename a chat session",
+    response_model=ApiResponse[SessionResponse],
+)
+async def rename_session(
+    session_id: str,
+    body: dict,
+    user: AuthUser = Depends(get_current_user),
+):
+    session = await _session_svc.rename(session_id, body.get("title", ""))
+    return success(SessionResponse(**session).model_dump())
+
+
 @router.delete(
     "/session/{session_id}",
     summary="Deactivate a chat session",

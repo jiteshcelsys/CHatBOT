@@ -1,3 +1,13 @@
+---
+title: ChatBot Backend
+emoji: 🤖
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 8000
+pinned: false
+---
+
 # AI Chatbot — Backend
 
 FastAPI backend for the AI chatbot. Uses LangChain + LangGraph for RAG and

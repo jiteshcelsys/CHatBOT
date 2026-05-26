@@ -24,6 +24,7 @@ from app.rag.embeddings import get_embeddings
 from app.rag.loaders import DocumentLoaderService
 from app.rag.splitter import TextSplitterService
 from app.vectorstore.cache_service import get_embedding_cache
+from app.vectorstore.chroma_client import get_chroma_client
 from app.vectorstore.collection_manager import CollectionManager
 from app.vectorstore.metadata_service import enrich_metadata, find_duplicate_ids
 
@@ -79,9 +80,9 @@ class IndexingService:
     def _lc_store(self) -> Chroma:
         """LangChain Chroma wrapper for this collection."""
         return Chroma(
+            client=get_chroma_client(),
             collection_name=self._collection_name,
             embedding_function=get_embeddings(),
-            persist_directory=self._persist_dir,
         )
 
     # ------------------------------------------------------------------ #

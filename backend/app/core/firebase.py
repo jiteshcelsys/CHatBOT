@@ -23,7 +23,7 @@ def get_firebase_app() -> firebase_admin.App:
         "type": "service_account",
         "project_id": settings.firebase_project_id,
         "private_key_id": settings.firebase_private_key_id,
-        "private_key": settings.firebase_private_key.replace("\\n", "\n"),
+        "private_key": settings.firebase_private_key.replace("\\\\n", "\n").replace("\\n", "\n").strip(),
         "client_email": settings.firebase_client_email,
         "token_uri": "https://oauth2.googleapis.com/token",
     })
