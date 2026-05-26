@@ -2,7 +2,7 @@
 import { useSessionStore } from "@/services/store/session-store";
 import { ConversationItem } from "./conversation-item";
 
-export function ConversationList() {
+export function ConversationList({ onClose }: { onClose?: () => void }) {
   const { sessions, activeSessionId, setActiveSession } = useSessionStore();
 
   if (sessions.length === 0) {
@@ -24,7 +24,7 @@ export function ConversationList() {
           key={s.id}
           session={s}
           isActive={s.id === activeSessionId}
-          onSelect={() => setActiveSession(s.id)}
+          onSelect={() => { setActiveSession(s.id); onClose?.(); }}
         />
       ))}
     </div>

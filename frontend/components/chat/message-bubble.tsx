@@ -32,7 +32,7 @@ export function MessageBubble({ message, userPhotoURL, userDisplayName }: Props)
       {/* Bubble */}
       <div
         className={cn(
-          "max-w-[78%] rounded-2xl px-4 py-2.5 text-sm shadow-sm",
+          "max-w-[88%] sm:max-w-[78%] lg:max-w-[65%] rounded-2xl px-4 py-2.5 text-sm shadow-sm",
           isUser
             ? "bg-primary text-primary-foreground rounded-tr-sm"
             : "bg-muted text-foreground rounded-tl-sm"

@@ -13,9 +13,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface Props {
   className?: string;
+  onClose?: () => void;
+  mobileOpen?: boolean;
 }
 
-export function Sidebar({ className }: Props) {
+export function Sidebar({ className, onClose, mobileOpen }: Props) {
   const router = useRouter();
   const { user, clearAuth } = useAuthStore();
   const { addSession, setActiveSession } = useSessionStore();
@@ -53,7 +55,11 @@ export function Sidebar({ className }: Props) {
   };
 
   return (
-    <aside className={cn("flex flex-col h-full bg-sidebar border-r", className)}>
+    <aside className={cn(
+      "flex flex-col h-full border-r transition-colors duration-300",
+      mobileOpen ? "bg-violet-50 border-violet-200" : "bg-sidebar",
+      className
+    )}>
       {/* Header */}
       <div className="flex items-center gap-2 px-4 py-3 border-b">
         <div className="h-7 w-7 rounded-full bg-violet-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
@@ -101,7 +107,7 @@ export function Sidebar({ className }: Props) {
         <p className="px-4 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/60 select-none">
           Conversations
         </p>
-        <ConversationList />
+        <ConversationList onClose={onClose} />
       </div>
 
       {/* User footer */}

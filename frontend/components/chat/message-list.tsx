@@ -28,7 +28,7 @@ export function MessageList({ messages, userPhotoURL, userDisplayName, isLoading
   }
 
   return (
-    <ScrollArea className="flex-1 px-4 py-4">
+    <ScrollArea className="flex-1 px-2 sm:px-4 py-4">
       <div className="mx-auto max-w-3xl flex flex-col gap-4">
         {messages.map((msg) => (
           <MessageBubble

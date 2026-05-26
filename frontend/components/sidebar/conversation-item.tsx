@@ -60,7 +60,7 @@ export function ConversationItem({ session, isActive, onSelect }: Props) {
       )}
 
       {!editing && (
-        <div className={cn("flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity", isActive && "opacity-100")}>
+        <div className={cn("flex gap-0.5 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity", isActive && "sm:opacity-100")}>
           <button
             className="p-0.5 rounded hover:bg-background/50 text-xs"
             onClick={(e) => { e.stopPropagation(); setEditing(true); }}
